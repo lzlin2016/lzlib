@@ -25,20 +25,20 @@ public class MyWebView extends WebView {
 
     public MyWebView(Context context) {
         super(context);
-        this.setWebview();
+        this.initWebview();
     }
 
     public MyWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setWebview();
+        this.initWebview();
     }
 
     public MyWebView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.setWebview();
+        this.initWebview();
     }
 
-    private void setWebview() {
+    private void initWebview() {
         WebSettings webSettings = this.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN); // web内容强制满屏

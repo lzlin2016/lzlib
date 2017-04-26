@@ -22,13 +22,13 @@ public class JSMainInterface {
 
     public JSMainInterface(Context context) {
         this.cxt = context;
-        this.preference = PreferenceManager.getDefaultSharedPreferences(this.cxt);
+        this.preference = PreferenceManager.getDefaultSharedPreferences(this. cxt);
     }
 
     // 被JS 调用的方法, 需要添加 @JavascriptInterface 注解
     @JavascriptInterface
     public boolean isLogined() {
-        System.out.println("token:"+this.preference.getString("token",null));
+        System.out.println("token:"+this.preference.getString("token", null));
         return !(this.preference.getString("token",null) == null);
     }
 
