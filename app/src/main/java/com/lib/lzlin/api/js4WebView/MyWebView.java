@@ -52,14 +52,14 @@ public class MyWebView extends WebView {
             }
         });
 
-        this.addJavascriptInterface(new JSMainInterface(getContext()), "XXX");  // 这是与服务端约定的协议
+        this.addJavascriptInterface(new JSMainInterface(getContext()), "XXXX");  // 这是与服务端约定的协议
 
         this.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 //  特定网址, 则采用内链路由打开本地界面
-                if (url.startsWith("XXX")) {
+                if (url.startsWith("XXXX")) {
                     Router.sharedRouter().open(url);
                     return true;
                 }

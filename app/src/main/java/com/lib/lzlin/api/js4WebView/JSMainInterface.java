@@ -16,13 +16,12 @@ import android.webkit.JavascriptInterface;
  */
 
 public class JSMainInterface {
-
-    private Context cxt;
+    private Context mContext;
     private SharedPreferences preference;
 
     public JSMainInterface(Context context) {
-        this.cxt = context;
-        this.preference = PreferenceManager.getDefaultSharedPreferences(this. cxt);
+        this.mContext = context;
+        this.preference = PreferenceManager.getDefaultSharedPreferences(this. mContext);
     }
 
     // 被JS 调用的方法, 需要添加 @JavascriptInterface 注解
