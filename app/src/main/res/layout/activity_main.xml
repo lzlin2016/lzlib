@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:context="com.example.administrator.lib_lz.com.lib.administrator.lib_lz.test.MainActivity">
+
+        <TextView
+            android:layout_weight="1"
+            android:onClick="moveUp"
+            android:gravity="center"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="上" />
+
+        <TextView
+            android:layout_weight="1"
+            android:onClick="moveDown"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="下" />
+        <TextView
+            android:layout_weight="1"
+            android:onClick="moveLeft"
+            android:layout_width="0dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="左" />
+        <TextView
+            android:layout_weight="1"
+            android:onClick="moveRight"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="右" />
+    </LinearLayout>
+
+    <com.lib.lzlin.api.test.LineIndicatoir
+        android:id="@+id/mLineIndicatoir"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mLineIndicatoir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="77dp"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mLineIndicatoir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:id="@+id/textView2" />
+
+    <com.lib.lzlin.api.custom.widget.StarBarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/mStarBarView"
+        app:space_width="20dp"
+        app:star_hollow="@mipmap/ic_star"
+        app:star_isIndicator="false"
+        app:star_max="5"
+        app:star_orientation="horizontal"
+        app:star_rating="1"
+        app:star_solid="@mipmap/ic_star_h"
+        app:star_height="50dp"
+        app:star_width="50dp"
+        android:layout_below="@+id/mLineIndicatoir"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="-"
+        android:onClick="btnSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/mStarBarView"
+        android:layout_alignRight="@+id/mStarBarView"
+        android:layout_alignEnd="@+id/mStarBarView"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="29dp"
+        android:id="@+id/button2" />
+
+    <Button
+        android:text="+"
+        android:onClick="btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="WIFI 测试"
+        android:onClick="testWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="21dp"
+        android:id="@+id/button4" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvPhoneInfo" />
+
+    <Button
+        android:text="百分比布局"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mLineIndicatoir"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4"
+        android:onClick="testPercentLayout"
+        android:layout_marginBottom="11dp"
+        android:id="@+id/button5" />
+
+    <Button
+        android:text="RecyclerViewAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_alignRight="@+id/mStarBarView"
+        android:onClick="testRecyclerView"
+        android:layout_alignEnd="@+id/mStarBarView"
+        android:id="@+id/button6" />
+
+    <Button
+        android:text="可滑动SlipViewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/button7"
+        android:layout_below="@+id/button"
+        android:onClick="btnSlipViewPager"
+        android:layout_alignLeft="@+id/mStarBarView"
+        android:layout_alignStart="@+id/mStarBarView" />
+
+    <!--<com.example.administrator.lib_lz.Custom.Widget.AutoEditText-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:text="Name"-->
+    <!--android:ems="10"-->
+    <!--android:layout_above="@+id/textView"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginBottom="24dp"-->
+    <!--android:id="@+id/editText2" />-->
+
+
+    <!--  失败的测试  -->
+    <!--<com.example.administrator.lib_lz.Custom.CustomView.yView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="#123456"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--&lt;!&ndash;<ListView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/mListView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
+            <!--&lt;!&ndash;</ListView>&ndash;&gt;-->
+        <!--</LinearLayout>-->
+    <!--</com.example.administrator.lib_lz.Custom.CustomView.MyView>-->
+
+</RelativeLayout>

@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+def AAVersion = '3.2'
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName "com.lib.lzlin.api"
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.lib.lzlin.api"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(':routable-android-master')
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:cardview-v7:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+
+    // recyclerview,注意需要和上面 appcompat-v7:25.3.0 同一个版本, 否则多包异常
+    compile 'com.android.support:recyclerview-v7:25.3.0'
+    // volley
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+     // gson
+    compile 'com.google.code.gson:gson:2.6.2'
+    // fresco
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    // Android 百分比布局库(percent-support-lib) 解析与扩展
+    compile 'com.zhy:percent-support-extends:1.0.1'
+}

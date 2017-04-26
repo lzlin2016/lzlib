@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="?attr/actionBarTheme">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <ImageView
+               android:layout_centerVertical="true"
+               android:layout_width="@dimen/dp40"
+               android:layout_height="@dimen/dp40"
+               app:srcCompat="@mipmap/btn_arrow_back"
+               android:id="@+id/imgBack" />
+
+           <TextView
+               android:layout_centerInParent="true"
+               android:text="NOTIFICATIONS"
+               android:textColor="@color/black"
+               android:layout_width="wrap_content"
+               android:textSize="@dimen/sp16"
+               android:layout_height="wrap_content"
+               android:id="@+id/tvToolbar" />
+       </RelativeLayout>
+   </RelativeLayout>
+</android.support.v7.widget.Toolbar>

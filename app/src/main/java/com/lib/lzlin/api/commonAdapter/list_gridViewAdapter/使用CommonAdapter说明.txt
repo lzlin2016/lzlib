@@ -1,0 +1,42 @@
+@Write by LZ    2017-03-27
+ 1)  必须声明为全局变量
+    	private ListView mListView;
+    	private List<Bean> mDatas;
+    	private MyAdapter mAdapter;
+
+ 2)  initData 初始化数据
+       List<Bean> mDatas = new ArrayList<Bean>();
+
+ 3)  initListView () 初始化ListView控件
+       	/**
+       	 * 为列表设置适配器
+       	 */
+       	private void initListView () {
+       		ListView mListView = (ListView) findViewById(R.id.listView);
+       	    CommonAdapter mAdapter = new CommonAdapter<Bean>(MainActivity.this, R.layout.item, mDatas) {
+                  @Override
+                  public void initItemData(CommonViewHolder holder, Bean bean) {
+                        // holder.setText4Tv(R.id.tv_title, bean.getTitle()); // 设置值
+                   }
+             };
+            mListView.setAdapter(mAdapter);
+       	}
+
+ 4) 或者写个类:
+		class MyAdapter extends CommonAdapter<Bean> {
+
+            /**
+             * 带参构造方法
+             *
+             * @param context         上下文对象
+             * @param itemLayoutResId item_layout 布局资源ID, 例如R.layout.XXX
+             * @param dataSource      要展示的数据列表
+             */
+            public MyAdapter(Context context, int itemLayoutResId, List<Bean> dataSource) {
+                super(context, itemLayoutResId, dataSource);
+            }
+
+            @Override
+    		public void initItemData(CommonViewHolder holder, Bean bean) {
+    		}
+    	}

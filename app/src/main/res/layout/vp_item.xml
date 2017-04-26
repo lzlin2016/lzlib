@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <!--CardView_cardBackgroundColor 设置背景色-->
+    <!--CardView_cardCornerRadius 设置圆角大小-->
+    <!--CardView_cardElevation 设置z轴阴影-->
+    <!--CardView_cardMaxElevation 设置z轴最大高度值-->
+    <!--CardView_cardUseCompatPadding 是否使用CompadPadding-->
+    <!--CardView_cardPreventCornerOverlap 是否使用PreventCornerOverlap-->
+    <!--CardView_contentPadding 内容的padding-->
+    <!--CardView_contentPaddingLeft 内容的左padding-->
+    <!--CardView_contentPaddingTop 内容的上padding-->
+    <!--CardView_contentPaddingRight 内容的右padding-->
+    <!--CardView_contentPaddingBottom 内容的底padding-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="design_thinking"
+                android:textColor="#123456"
+                android:textSize="15sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="3"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="future_china_predict"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="4"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:text="future_industrial_designer"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
