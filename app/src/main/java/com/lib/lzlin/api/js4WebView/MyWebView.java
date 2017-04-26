@@ -58,7 +58,7 @@ public class MyWebView extends WebView {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //  特定网址, 则采用neilianluyou内链路由打开本地界面
+                //  特定网址, 则采用内链路由打开本地界面
                 if (url.startsWith("XXX")) {
                     Router.sharedRouter().open(url);
                     return true;
