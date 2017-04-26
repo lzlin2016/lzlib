@@ -32,8 +32,8 @@ public class LzConstant {
      * 定义一些数据请求的URL 常量
      */
     public static final class Url4AppClient {
-        public static final String BASE_URL = "http://wstmall.ibenhong.com/index.php";// 主网址
+        public static final String BASE_URL = "你们公司的域名";// 主网址
         // 不同类型的URL接口地址
-        public static final String userSignInAuthor = "?m=Apis&c=Auth&a=login";// 用户登陆
+        public static final String userSignInAuthor = "详细接口";// 用户登陆
     }
 }
