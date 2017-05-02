@@ -156,16 +156,29 @@
         android:layout_alignEnd="@+id/mStarBarView"
         android:id="@+id/button6" />
 
-    <Button
-        android:text="可滑动SlipViewPager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_marginTop="30dp"
-        android:id="@+id/button7"
-        android:layout_below="@+id/button"
-        android:onClick="btnSlipViewPager"
         android:layout_alignLeft="@+id/mStarBarView"
-        android:layout_alignStart="@+id/mStarBarView" />
+        android:layout_alignStart="@+id/mStarBarView"
+        android:layout_below="@+id/button"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="可滑动SlipViewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button7"
+            android:onClick="btnSlipViewPager" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:text="6.0动态权限分配"
+            android:onClick="btnTestPermissions"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <!--<com.example.administrator.lib_lz.Custom.Widget.AutoEditText-->
     <!--android:layout_width="wrap_content"-->
@@ -181,21 +194,21 @@
 
     <!--  失败的测试  -->
     <!--<com.example.administrator.lib_lz.Custom.CustomView.yView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:orientation="vertical"-->
-            <!--android:background="#123456"-->
-            <!--android:layout_height="match_parent">-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#123456"-->
+    <!--android:layout_height="match_parent">-->
 
-            <!--&lt;!&ndash;<ListView&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/mListView"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
-            <!--&lt;!&ndash;</ListView>&ndash;&gt;-->
-        <!--</LinearLayout>-->
+    <!--&lt;!&ndash;<ListView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/mListView"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
+    <!--&lt;!&ndash;</ListView>&ndash;&gt;-->
+    <!--</LinearLayout>-->
     <!--</com.example.administrator.lib_lz.Custom.CustomView.MyView>-->
 
 </RelativeLayout>

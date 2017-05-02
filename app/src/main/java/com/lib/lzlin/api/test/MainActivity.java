@@ -1,6 +1,5 @@
 package com.lib.lzlin.api.test;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,13 +14,14 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.lib.lzlin.api.R;
+import com.lib.lzlin.api.activity.VirtualKeyBaseActivity;
 import com.lib.lzlin.api.custom.widget.StarBarView;
 import com.lib.lzlin.api.test.testPercentLayout.TestPercentLayoutActivity;
 import com.lib.lzlin.api.utils.activityUtils.ActivityHelper;
 import com.lib.lzlin.api.utils.activityUtils.KeyVaule;
 import com.lib.lzlin.api.utils.commonUtils.DensityUtils;
 
-public class MainActivity extends Activity {
+public class MainActivity extends VirtualKeyBaseActivity {
     private LineIndicatoir mLineIndicatoir;
     private TextView textView;
     private TextView textView2;
@@ -81,6 +81,9 @@ public class MainActivity extends Activity {
     }
     public void testRecyclerView(View view) {
         startActivity(new Intent(this, TestRecyclerActivity.class));
+    }
+    public void btnTestPermissions(View view) {
+        startActivity(new Intent(this, TestPermission6Activity.class));
     }
     public void btnSlipViewPager(View view) {
         startActivity(new Intent(this, TestSlipViewPagerActivity.class));

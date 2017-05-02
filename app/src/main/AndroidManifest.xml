@@ -2,6 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lib.lzlin.api">
 
+    <!-- Android 6.0 危险权限, 需要动态申请 -->
+    <uses-permission-sdk-m android:name="android.permission.READ_CONTACTS" />
+    <uses-permission-sdk-m android:name="android.permission.WRITE_CONTACTS" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- 网络权限, 最基本的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- WIFI 管理需要设计的权限 -->
@@ -57,7 +74,9 @@
         <activity android:name=".test.testPercentLayout.Demo2Activity" />
         <activity android:name=".test.testPercentLayout.Demo3Activity" />
         <activity android:name=".test.TestRecyclerActivity" />
-        <activity android:name=".test.TestSlipViewPagerActivity"></activity>
+        <activity android:name=".test.TestSlipViewPagerActivity" />
+        <activity android:name=".test.TestPermission6Activity" />
+        <activity android:name=".activity.VirtualKeyBaseActivity"></activity>
     </application>
 
 </manifest>
