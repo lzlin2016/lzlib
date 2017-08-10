@@ -53,4 +53,12 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.12.0'
     // Android 百分比布局库(percent-support-lib) 解析与扩展
     compile 'com.zhy:percent-support-extends:1.0.1'
+    // 快速实现收缩键盘 Android快速实现点击任意位置收缩键盘   用法:在Acitivty/Fragment的onCreate中   HideIMEUtil.wrap(this);
+    compile 'org.loader:autohideime:1.0'
+    // Eventbus 传值  http://blog.csdn.net/happy_horse/article/details/51565441
+    compile 'org.greenrobot:eventbus:3.0.0'
+    // Android 与 JS 交互, 必须先添加 maven 仓库  maven { url "https://jitpack.io" }
+    compile 'com.github.lzyzsd:jsbridge:1.0.4'
+
+
 }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lib.lzlin.api.BaseWidget;
 import com.lib.lzlin.api.R;
 import com.lib.lzlin.api.application.MyAppUtil;
 
@@ -25,6 +26,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     private final static String TAG = "BaseActivity";
     private Activity activity;
     private LayoutInflater mInflater;
+    BaseWidget baseWidget = new BaseWidget();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

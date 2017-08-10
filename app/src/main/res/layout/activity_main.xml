@@ -163,7 +163,8 @@
         android:layout_alignLeft="@+id/mStarBarView"
         android:layout_alignStart="@+id/mStarBarView"
         android:layout_below="@+id/button"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
 
         <Button
             android:text="可滑动SlipViewPager"
@@ -179,6 +180,28 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/edtTestFilter" />
+
+    <Button
+        android:text="Test GsonFormatExecption"
+        android:id="@+id/btnGsonFormatExecption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignLeft="@+id/mStarBarView"
+        android:layout_alignStart="@+id/mStarBarView" />
 
     <!--<com.example.administrator.lib_lz.Custom.Widget.AutoEditText-->
     <!--android:layout_width="wrap_content"-->

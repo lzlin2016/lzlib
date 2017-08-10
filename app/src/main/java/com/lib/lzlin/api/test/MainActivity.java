@@ -10,9 +10,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.lib.lzlin.api.R;
 import com.lib.lzlin.api.activity.VirtualKeyBaseActivity;
 import com.lib.lzlin.api.custom.widget.StarBarView;
@@ -20,8 +18,10 @@ import com.lib.lzlin.api.test.testPercentLayout.TestPercentLayoutActivity;
 import com.lib.lzlin.api.utils.activityUtils.ActivityHelper;
 import com.lib.lzlin.api.utils.activityUtils.KeyVaule;
 import com.lib.lzlin.api.utils.commonUtils.DensityUtils;
+import com.lib.lzlin.api.utils.customUtils.ToastUtils;
+import com.lib.lzlin.api.utils.gsonFormat.GsonUtils1;
 
-public class MainActivity extends VirtualKeyBaseActivity {
+public class MainActivity extends VirtualKeyBaseActivity implements View.OnClickListener {
     private LineIndicatoir mLineIndicatoir;
     private TextView textView;
     private TextView textView2;
@@ -31,7 +31,6 @@ public class MainActivity extends VirtualKeyBaseActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +40,13 @@ public class MainActivity extends VirtualKeyBaseActivity {
         initTv();
         initListView();
         initStartBar();
+        findViewById(R.id.btnGsonFormatExecption).setOnClickListener(this);
         Log.e("MainActivity", "onCreate");
         String id = getIntent().getStringExtra("id");
         textView.setText(id == null ? "Test Router" : "Test Router " + id);
         textView2.setText("Test PagerSlidingTabStrip");
 
         mLineIndicatoir = (LineIndicatoir) findViewById(R.id.mLineIndicatoir);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     /**
@@ -135,6 +132,57 @@ public class MainActivity extends VirtualKeyBaseActivity {
         );
     }
 
+    /**
+     * 测试Gson 格式化异常
+     */
+    public void btnGsonFormatExecption() {
+        String json = "{\"index\":\"这是什么鬼\", \"age\":\"1.1\", \"like\":null, \"name\":null}";
+        Bean1 bean1 = GsonUtils1.GsonToBean(json, Bean1.class);
+        ToastUtils.showToast(this, bean1.toString() + (bean1.getName() == null));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnGsonFormatExecption: // 测试Gson 格式化异常
+                btnGsonFormatExecption();
+                break;
+        }
+    }
+
+    class Bean1 {
+        int index;
+        int age;
+        String name;
+        private String[] like;
+
+        public int getIndex() {
+            return index;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String[] getLike() {
+            return like;
+        }
+
+        @Override
+        public String toString() {
+            return "Bean1{" +
+                    "index=" + index +
+                    ", age=" + age +
+                    ", name='" + name + '\'' +
+                    ", like=" + like +
+                    '}';
+        }
+    }
+
     public void moveUp(View view) {
 //        mLineIndicatoir.startMoveAnimation( LineIndicatoir.DIRECTION_UP, 200);
         // (float fromXDelta, float toXDelta, float fromYDelta, float toYDelta)
@@ -188,23 +236,4 @@ public class MainActivity extends VirtualKeyBaseActivity {
                 .build();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
 }

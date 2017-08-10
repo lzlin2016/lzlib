@@ -1,4 +1,4 @@
-package com.lib.lzlin.api.utils.netUtils;
+package com.lib.lzlin.api.utils.netUtils.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

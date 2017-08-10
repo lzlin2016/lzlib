@@ -79,7 +79,7 @@ public class IntentHelper extends Intent {
     public static void startActivity() {
         startActivity(false);
     }
-    public static void startActivity2() {
+    public static void startActivityCheck() {
         startActivity(true);
     }
 

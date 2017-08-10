@@ -1,6 +1,6 @@
 package com.lib.lzlin.api.utils.commonUtils;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
@@ -20,83 +20,72 @@ public class SPUtils {
 
     /**
      * 初始化-SP
-     * @param activity activity 对象
+     * @param context context 对象
      */
-    private static void initSP(Activity activity) {
+    private static void initSP(Context context) {
         if (sp == null) {
-            sp = activity.getSharedPreferences(FILE_NAME, 0);//创建Sp文件,为私有模式
+            sp = context.getSharedPreferences(FILE_NAME, 0);//创建Sp文件,为私有模式
             edit = sp.edit();// 初始化edit
         }
     }
 
     /**
      * 清空所有数据 - SP
-     * @param activity activity 对象
+     * @param context context 对象
      */
-    private static void clearSP(Activity activity) {
-        initSP(activity);
+    private static void clearSP(Context context) {
+        initSP(context);
         edit.clear();
         edit.commit();
     }
 
     /**
      * 设置SP 值
-     * @param activity activity 对象
+     * @param context context 对象
      * @param key      key
      * @param value    value
      */
-    public static void setIntegerSP(Activity activity, String key, Integer value) {
-            initSP(activity);
-            edit.putInt(key, value);
-            edit.commit();
-    }
-    public static void setFloatSP(Activity activity, String key, Float value) {
-            initSP(activity);
-            edit.putFloat(key, value);
-            edit.commit();
-    }
-    public static void setBooleanSP(Activity activity, String key, Boolean value) {
-            initSP(activity);
-            edit.putBoolean(key, value);
-            edit.commit();
-    }
-    public static void setStrSP(Activity activity, String key, String value) {
-        initSP(activity);
-        edit.putString(key, value);
+    public static void put(Context context, String key, Object value) {
+        initSP(context);
+        if (value instanceof String) {
+            edit.putString(key, (String) value);
+        } else if (value instanceof Integer) {
+            edit.putInt(key, (Integer) value);
+        } else if (value instanceof Boolean) {
+            edit.putBoolean(key, (Boolean) value);
+        } else if (value instanceof Float) {
+            edit.putFloat(key, (Float) value);
+        } else if (value instanceof Long) {
+            edit.putLong(key, (Long) value);
+        } else {
+            edit.putString(key, value.toString());
+        }
         edit.commit();
-    }
-    public static void setLongSP(Activity activity, String key, Long value) {
-            initSP(activity);
-            edit.putLong(key, value);
-            edit.commit();
     }
 
     /**
      * 获取SP 值
-     * @param activity activity 对象
+     * @param context context 对象
      * @param key      key
      * @param defaultValue    默认值
      * @return        f返回结果
      */
-    public static Integer getIntegerSP(Activity activity, String key, Integer defaultValue) {
-        initSP(activity);
-        return sp.getInt(key, defaultValue);
-    }
-    public static Float getFloatSP(Activity activity, String key, Float defaultValue) {
-        initSP(activity);
-        return sp.getFloat(key, defaultValue);
-    }
-    public static Boolean getBooleanSP(Activity activity, String key, Boolean defaultValue) {
-        initSP(activity);
-        return sp.getBoolean(key, defaultValue);
-    }
-    public static String getStrSP(Activity activity, String key, String defaultValue) {
-        initSP(activity);
-        return sp.getString(key, defaultValue);
-    }
-    public static Long getLongSP(Activity activity, String key, Long defaultValue) {
-        initSP(activity);
-        return sp.getLong(key, defaultValue);
+    public static Object get(Context context, String key, Object defaultValue) {
+        initSP(context);
+        if (defaultValue instanceof String) {
+            defaultValue = sp.getString(key, (String) defaultValue);
+        } else if (defaultValue instanceof Integer) {
+            defaultValue = sp.getInt(key, (Integer) defaultValue);
+        } else if (defaultValue instanceof Boolean) {
+            defaultValue = sp.getBoolean(key, (Boolean) defaultValue);
+        } else if (defaultValue instanceof Float) {
+            defaultValue = sp.getFloat(key, (Float) defaultValue);
+        } else if (defaultValue instanceof Long) {
+            defaultValue = sp.getLong(key, (Long) defaultValue);
+        } else {
+            defaultValue = sp.getString(key, defaultValue.toString());
+        }
+        return defaultValue;
     }
 
 }

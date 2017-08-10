@@ -33,7 +33,7 @@ public class LanguageSwitchUtils {
      */
     public static void switchLanguage(Activity activity) {
         Configuration config = activity.getResources().getConfiguration();// 获得设置对象
-        int langue = SPUtils.getIntegerSP(activity, LANGUE, LANGUE_AUTO);
+        int langue = (int) SPUtils.get(activity, LANGUE, LANGUE_AUTO);
         switch (langue) {
             case LANGUE_CHINESE:
                 config.locale = Locale.CHINESE; // 中文

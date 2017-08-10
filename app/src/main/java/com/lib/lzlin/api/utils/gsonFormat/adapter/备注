@@ -1,0 +1,1 @@
+我们写一个针对int值的类型转换器,需要实现Gson的 JsonSerializer<T> 接口和 JsonDeserializer<T> ,即序列化和反序列化接口
