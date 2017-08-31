@@ -15,7 +15,7 @@ import java.io.IOException;
  * 修改备注:  参考资源: http://www.jianshu.com/p/4f11baacd5a3
  *      1. 需要依赖:  compile 'com.alipay.euler:andfix:0.4.0@aar'
  *      2. 需要先下载热更新文件, 文件生成方式参考资源
- *          生成: apkpatch -f new.apk  -t old.apk -o ./  -k ./package.jks -p ibenhong2015 -a benhong -e ibenhong2015
+ *          生成: apkpatch -f new.apk  -t old.apk -o ./  -k ./package.jks -p pwd -a alias -e pwd
  *      3. 调用工具类实现热更新
  */
 
