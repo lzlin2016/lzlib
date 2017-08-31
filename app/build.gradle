@@ -61,4 +61,8 @@ dependencies {
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
     // 状态栏实现黑底白字工具类
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    // 热更新
+    compile 'com.alipay.euler:andfix:0.4.0@aar'
+    // 图片加载框架
+    compile 'com.github.bumptech.glide:glide:3.6.0'
 }

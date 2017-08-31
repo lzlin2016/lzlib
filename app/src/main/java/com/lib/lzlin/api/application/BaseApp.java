@@ -21,6 +21,13 @@ import java.util.ArrayList;
 
 public class BaseApp extends Application {
     ArrayList<Activity> list = new ArrayList<Activity>();//保存已启动的Activity
+    private static Application myApplication = null;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        myApplication = this;
+    }
 
     public void addActivty(Activity activity) {//添加Activity
         if (LzConstant.OpenSwitch2Client.isOpenStatebarColor				 // 是否使用渲染 / 沉浸式  状态栏
@@ -43,5 +50,9 @@ public class BaseApp extends Application {
             Activity activity = list.get(i);
             activity.finish();
         }
+    }
+
+    public static Application getApplication() {
+        return myApplication;
     }
 }
