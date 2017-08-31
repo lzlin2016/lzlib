@@ -59,6 +59,6 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     // Android 与 JS 交互, 必须先添加 maven 仓库  maven { url "https://jitpack.io" }
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
-
-
+    // 状态栏实现黑底白字工具类
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }
