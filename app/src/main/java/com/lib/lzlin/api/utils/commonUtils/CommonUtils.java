@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
  * 修改备注:
  */
 
-public class CommonUtil {
+public class CommonUtils {
 	/**
 	 * dip转化成px
 	 */

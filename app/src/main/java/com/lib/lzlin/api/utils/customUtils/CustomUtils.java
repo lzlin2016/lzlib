@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import static com.lib.lzlin.api.utils.commonUtils.CommonUtil.getResources;
+import static com.lib.lzlin.api.utils.commonUtils.CommonUtils.getResources;
 
 /**
  * 项目名称: HappyGo

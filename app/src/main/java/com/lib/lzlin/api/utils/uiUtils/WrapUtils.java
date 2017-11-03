@@ -6,8 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import www.ibenhong.com.happygo.application.BaseApp;
-import www.ibenhong.com.happygo.widget.AutoHideIMEFrameLayout;
+import com.lib.lzlin.api.application.BaseApp;
+
+import org.loader.autohideime.AutoHideIMEFrameLayout;
 
 /**
  * WrapUtils

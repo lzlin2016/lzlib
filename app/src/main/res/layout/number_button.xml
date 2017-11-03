@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_count_minus"
-        android:layout_width="@dimen/dp24"
-        android:layout_height="@dimen/dp24"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
         android:enabled="false"
         android:src="@drawable/btn_count_reduce_selector" />
 
@@ -22,16 +22,16 @@
         android:gravity="center"
         android:inputType="number"
         android:maxLength="5"
-        android:minHeight="@dimen/dp24"
-        android:minWidth="@dimen/dp26"
+        android:minHeight="@dimen/dp_24"
+        android:minWidth="@dimen/dp_26"
         android:text="1"
         android:textColor="@color/black"
-        android:textSize="@dimen/sp13" />
+        android:textSize="@dimen/sp_13" />
 
     <ImageView
         android:id="@+id/iv_count_add"
-        android:layout_width="@dimen/dp24"
-        android:layout_height="@dimen/dp24"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
         android:src="@drawable/btn_count_add_selector" />
 
 

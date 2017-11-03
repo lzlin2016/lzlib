@@ -1,6 +1,6 @@
 package com.lib.lzlin.api.utils.deviceUtils;
 
-import com.lib.lzlin.api.utils.commonUtils.CommonUtil;
+import com.lib.lzlin.api.utils.commonUtils.CommonUtils;
 
 /**
  * 项目名称: Lib-lz
@@ -15,26 +15,26 @@ import com.lib.lzlin.api.utils.commonUtils.CommonUtil;
 public class FileManager {
 	// TODO 　根据实际需要, 修改成当前公司名
 	public static String getSaveFilePath() {
-		if (CommonUtil.hasSDCard()) {
-			return CommonUtil.getRootFilePath() + "ibenhong/files/";
+		if (CommonUtils.hasSDCard()) {
+			return CommonUtils.getRootFilePath() + "ibenhong/files/";
 		} else {
-			return CommonUtil.getRootFilePath() + "ibenhong/files";
+			return CommonUtils.getRootFilePath() + "ibenhong/files";
 		}
 	}
 	
 	public static String getSaveImagePath() {
-		if (CommonUtil.hasSDCard()) {
-			return CommonUtil.getRootFilePath() + "ibenhong/images/";
+		if (CommonUtils.hasSDCard()) {
+			return CommonUtils.getRootFilePath() + "ibenhong/images/";
 		} else {
-			return CommonUtil.getRootFilePath() + "ibenhong/images";
+			return CommonUtils.getRootFilePath() + "ibenhong/images";
 		}
 	}
 	
 	public static String getSaveRatePath() {
-		if (CommonUtil.hasSDCard()) {
-			return CommonUtil.getRootFilePath() + "ibenhong/";
+		if (CommonUtils.hasSDCard()) {
+			return CommonUtils.getRootFilePath() + "ibenhong/";
 		} else {
-			return CommonUtil.getRootFilePath() + "ibenhong";
+			return CommonUtils.getRootFilePath() + "ibenhong";
 		}
 	}
 }

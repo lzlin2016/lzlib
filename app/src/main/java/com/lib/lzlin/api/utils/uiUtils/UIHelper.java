@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import www.ibenhong.com.happygo.application.BaseApp;
-import www.ibenhong.com.happygo.utils.CommonUtils;
-import www.ibenhong.com.happygo.utils.GlideUtils;
+import com.lib.lzlin.api.application.BaseApp;
+import com.lib.lzlin.api.utils.commonUtils.CommonUtils;
+import com.lib.lzlin.api.utils.netUtils.GlideUtils;
 
 /**
  * UIHelper

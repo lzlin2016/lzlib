@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
 import com.lib.lzlin.api.R;
-import com.lib.lzlin.api.utils.commonUtils.CommonUtil;
+import com.lib.lzlin.api.utils.commonUtils.CommonUtils;
 
 import java.util.concurrent.ExecutionException;
 
@@ -83,7 +83,7 @@ public class GlideUtils {
                     .load(url)
                     .asBitmap() //必须
                     .centerCrop()
-                    .into(CommonUtil.px2dip(ctx, width), CommonUtil.px2dip(ctx, heigh))
+                    .into(CommonUtils.px2dip(ctx, width), CommonUtils.px2dip(ctx, heigh))
                     .get();
         } catch (InterruptedException e) {
             e.printStackTrace();
