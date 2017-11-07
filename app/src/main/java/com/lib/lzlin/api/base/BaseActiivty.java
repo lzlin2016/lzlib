@@ -16,7 +16,7 @@
 //import com.lib.lzlin.api.R;
 //import com.lib.lzlin.api.application.MyApp;
 //import com.lib.lzlin.api.application.MyAppUtil;
-//import com.lib.lzlin.api.utils.customUtils.ToastUtils;
+//import com.lib.lzlin.api.utils.customUtils.ToastUtils_custom;
 //import com.lib.lzlin.api.utils.uiUtils.UIHelper;
 //import com.lib.lzlin.api.utils.uiUtils.WrapUtils;
 //
@@ -137,7 +137,7 @@
 //    protected void initRefreshLayout(int mRefreshID) {
 //        mRefresh = helper.getViewById(mRefreshID);
 //        if (mRefresh == null || !(mRefresh instanceof TwinklingRefreshLayout)) {
-//            ToastUtils.showToast(mActivity, "mRefreshID 找不到对应控件, 请检查xml 文件");
+//            ToastUtils_custom.showToast(mActivity, "mRefreshID 找不到对应控件, 请检查xml 文件");
 //            return;
 //        }
 //        RefreshHelper.initRefreshLayout(mActivity, mRefresh);
@@ -162,7 +162,7 @@
 //     */
 //    protected void finishRefreshLayout() {
 //        if (mRefresh == null) {
-//            ToastUtils.showToast(mActivity, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
+//            ToastUtils_custom.showToast(mActivity, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
 //            return;
 //        }
 //        if (isLoadingMore) {
@@ -177,7 +177,7 @@
 //     */
 //    protected void dealRefreshEvent(boolean isLastPage) {
 //        if (mRefresh == null) {
-//            ToastUtils.showShort(mActivity, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
+//            ToastUtils_custom.showShort(mActivity, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
 //            return;
 //        }
 //        mRefresh.setEnableLoadmore(!isLastPage);

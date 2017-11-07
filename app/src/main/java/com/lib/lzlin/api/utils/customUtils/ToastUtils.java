@@ -1,41 +1,70 @@
 package com.lib.lzlin.api.utils.customUtils;
 
-import android.content.Context;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lib.lzlin.api.R;
+import com.lib.lzlin.api.application.BaseApp;
 
 /**
- * 项目名称: Lib-lz
- * <p>
- * 类的描述: ToastUtils 封装
- * 创建人: Administrator
- * 创建时间:  2017/4/15 10:23
- * 修改人: lz - Administrator
+ * ToastUtils
+ *
+ * 类的描述: toast 辅助工具类
+ * 创建时间: time: 2017/11/7  16:11
  * 修改备注:
  */
 
-public final class ToastUtils {
+public class ToastUtils {
+    private final static boolean SHOW_NULL = true; // 是否显示空toast
+    private static Toast mToast;
 
-	private static Toast toast;
-	public  static void showToast(Context context, String text) {
-		if (toast != null){
-			toast.cancel();
-		}
-		toast = new Toast(context);
-		View view = LayoutInflater.from(context).inflate(R.layout.custom_toast, null);
-		TextView tvText = (TextView) view.findViewById(R.id.tvToask);
-		tvText.setText(text);
-		// toast.setBackground();
-		toast.setView(view);
-		toast.setGravity(Gravity.BOTTOM, 0, 120);
-		toast.setDuration(Toast.LENGTH_LONG);
-		toast.show();
-	}
-	
-	private ToastUtils(){}
+    private ToastUtils() {}
+
+    /**
+     * 初始化, 单例
+     */
+    public static void init() {
+        synchronized (ToastUtils.class) {
+            if (mToast == null) {
+                mToast = Toast.makeText(BaseApp.getApplication(), "", Toast.LENGTH_SHORT);
+            }
+        }
+    }
+
+    /**
+     * 显示toast
+     * @param info
+     */
+    public static void show(String info) {
+        if (!SHOW_NULL && info == null) {
+            return;
+        }
+        if (mToast == null) {
+            init();
+        }
+        mToast.setText(info == null ? "NULL" : info);
+        mToast.show();
+    }
+
+    /**
+     * 显示toast
+     * @param resId
+     */
+    public static void show(int resId) {
+        if (resId <= 0) {
+            return;
+        }
+        if (mToast == null) {
+            init();
+        }
+        mToast.setText(resId);
+        mToast.show();
+    }
+
+    /**
+     * 取消toast
+     */
+    public static void dimiss() {
+        if (mToast != null) {
+            mToast.cancel();
+        }
+    }
 }

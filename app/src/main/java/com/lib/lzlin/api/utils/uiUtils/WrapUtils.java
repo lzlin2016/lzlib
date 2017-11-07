@@ -62,7 +62,7 @@ public class WrapUtils {
      */
     public static boolean wrapSelf(ViewGroup contentParent, View mLayout) {
         boolean needWrap = contentParent.getChildCount() == 0; // 已有parent ,则无需嵌套
-        if(needWrap) {
+        if(needWrap) {  // 为true时替换布局
             ViewGroup.LayoutParams params = contentParent.getLayoutParams();
             contentParent.addView(mLayout, new ViewGroup.LayoutParams(params.width, params.height));
         }

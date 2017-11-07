@@ -18,7 +18,7 @@
 //
 //import www.ibenhong.com.happygo.R;
 //import www.ibenhong.com.happygo.constance.HConstant;
-//import www.ibenhong.com.happygo.utils.ToastUtils;
+//import www.ibenhong.com.happygo.utils.ToastUtils_custom;
 //import www.ibenhong.com.happygo.utils.uiUtils.UIHelper;
 //import www.ibenhong.com.happygo.utils.uiUtils.WrapUtils;
 //
@@ -154,7 +154,7 @@
 //    protected void initRefreshLayout(int mRefreshID) {
 //        mRefresh = helper.getViewById(mRefreshID);
 //        if (mRefresh == null || !(mRefresh instanceof TwinklingRefreshLayout)) {
-//            ToastUtils.showShort(mContext, "mRefreshID 找不到对应控件, 请检查xml 文件");
+//            ToastUtils_custom.showShort(mContext, "mRefreshID 找不到对应控件, 请检查xml 文件");
 //            return;
 //        }
 //        ProgressLayout headerView = new ProgressLayout(mContext);
@@ -182,7 +182,7 @@
 //     */
 //    protected void finishRefreshLayout() {
 //        if (mRefresh == null) {
-//            ToastUtils.showShort(mContext, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
+//            ToastUtils_custom.showShort(mContext, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
 //            return;
 //        }
 //        if (isRefresh) {
@@ -197,7 +197,7 @@
 //     */
 //    protected void dealRefreshEvent(boolean isLastPage) {
 //        if (mRefresh == null) {
-//            ToastUtils.showShort(mContext, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
+//            ToastUtils_custom.showShort(mContext, "mRefresh == null, 请先调用 initRefreshLayout() 初始化");
 //            return;
 //        }
 //        mRefresh.setEnableLoadmore(!isLastPage);

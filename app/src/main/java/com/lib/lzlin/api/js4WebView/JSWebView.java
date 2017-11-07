@@ -97,7 +97,7 @@ public class JSWebView extends BridgeWebView {
                 } else if (method.equalsIgnoreCase(JUMPTOPAGE)) {// 跳转界面
                     toStart(data);
                 } else if (method.equalsIgnoreCase(TOAST)) {
-//                    ToastUtils.showShort(context, data);
+//                    ToastUtils_custom.showShort(context, data);
                 }else if(method.equalsIgnoreCase(SAVEIMAGE)){// 保存图片到图库
                     savaImage(data);
                 }
@@ -115,11 +115,11 @@ public class JSWebView extends BridgeWebView {
 //                    @Override
 //                    public void run() {
 //                        if (bitmap == null) {
-//                            ToastUtils.showShort(context, "二维码图片路径错误");
+//                            ToastUtils_custom.showShort(context, "二维码图片路径错误");
 //                            return;
 //                        }
 //                        GalleryUtils.saveImageToGallery(context, bitmap);
-//                        ToastUtils.showShort(context, "二维码保存成功, 你可以在相册查看! ");
+//                        ToastUtils_custom.showShort(context, "二维码保存成功, 你可以在相册查看! ");
 //                    }
 //                });
             }

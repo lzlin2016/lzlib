@@ -18,7 +18,7 @@ import com.lib.lzlin.api.test.testPercentLayout.TestPercentLayoutActivity;
 import com.lib.lzlin.api.utils.activityUtils.ActivityHelper;
 import com.lib.lzlin.api.utils.activityUtils.KeyVaule;
 import com.lib.lzlin.api.utils.commonUtils.DensityUtils;
-import com.lib.lzlin.api.utils.customUtils.ToastUtils;
+import com.lib.lzlin.api.utils.customUtils.ToastUtils_custom;
 import com.lib.lzlin.api.utils.gsonFormat.GsonUtils1;
 
 public class MainActivity extends VirtualKeyBaseActivity implements View.OnClickListener {
@@ -138,7 +138,7 @@ public class MainActivity extends VirtualKeyBaseActivity implements View.OnClick
     public void btnGsonFormatExecption() {
         String json = "{\"index\":\"这是什么鬼\", \"age\":\"1.1\", \"like\":null, \"name\":null}";
         Bean1 bean1 = GsonUtils1.GsonToBean(json, Bean1.class);
-        ToastUtils.showToast(this, bean1.toString() + (bean1.getName() == null));
+        ToastUtils_custom.showToast(this, bean1.toString() + (bean1.getName() == null));
     }
 
     @Override

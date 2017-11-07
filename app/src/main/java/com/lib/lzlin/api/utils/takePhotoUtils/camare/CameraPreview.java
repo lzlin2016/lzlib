@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.lib.lzlin.api.utils.customUtils.ToastUtils;
+import com.lib.lzlin.api.utils.customUtils.ToastUtils_custom;
 import com.lib.lzlin.api.utils.takePhotoUtils.utils.Utils;
 
 import java.io.IOException;
@@ -88,7 +88,7 @@ public class CameraPreview extends SurfaceView implements
 		// 获得Camera对象
 		camera = getCameraInstance();
 		if(camera == null) {
-			ToastUtils.showToast(getContext(), "请检查您的相机设置!");
+			ToastUtils_custom.showToast(getContext(), "请检查您的相机设置!");
 			return;
 		}
 		try {

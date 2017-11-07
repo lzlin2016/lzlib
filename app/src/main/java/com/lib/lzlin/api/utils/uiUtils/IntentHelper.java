@@ -90,7 +90,7 @@ public class IntentHelper extends Intent {
     private static boolean startActivity(boolean requireCheck) {
         // TODO 根据实际情况判断
 //        if (requireCheck && !OkHttpClient.isUserSign()) {
-//            ToastUtils.showToast(mContext, "您还未登录, 请先登录! ");
+//            ToastUtils_custom.showToast(mContext, "您还未登录, 请先登录! ");
 //            mContext.startActivity(new Intent(mContext, LoginActivity.class));
 //            return false;
 //        }

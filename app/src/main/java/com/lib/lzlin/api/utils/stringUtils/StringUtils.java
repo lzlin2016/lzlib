@@ -762,7 +762,11 @@ public class StringUtils {
         return builder;
     }
 
-    //MD5加密
+    /**
+     * MD5加密
+     * @param string
+     * @return
+     */
     public static String md5(String string) {
         byte[] hash;
         try {
@@ -779,5 +783,30 @@ public class StringUtils {
             hex.append(Integer.toHexString(b & 0xFF));
         }
         return hex.toString();
+    }
+
+    /**
+     * 正则表达式 先截取URL, 其次截取淘口令, 否则返回全部
+     * @param link
+     * @return
+     */
+    public static String getTaoURL(String link) {
+        try {
+            // 提取正则表达式
+            Pattern regexUrl = Pattern
+                    .compile("(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
+            Matcher matcherUrl = regexUrl.matcher(link);
+            if (matcherUrl.find()) {
+                return  matcherUrl.group().trim();
+            }
+            // 提取淘口令
+            Pattern regexTaokouling = Pattern.compile("￥.*￥");
+            Matcher matcherTaokouling = regexTaokouling.matcher(link);
+            if (matcherTaokouling.find()) {
+                return  matcherTaokouling.group().trim();
+            }
+        } catch (Exception e) {
+        }
+        return "";
     }
 }

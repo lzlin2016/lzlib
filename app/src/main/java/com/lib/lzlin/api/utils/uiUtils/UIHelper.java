@@ -30,6 +30,8 @@ public class UIHelper {
     private Context mContext;
     private SparseArray<View> mViews;
     private View mConvertView;
+    private final boolean debug = true; // 是否是调试模式, 当且仅当调试模式才会抛异常
+    private final String NULL = debug ? "NULL" : ""; // 当数据为null时, 显示的内容, 统一配置
 
     private UIHelper(Context ctx, View mLayout) {
         init(ctx, mLayout);
@@ -95,13 +97,27 @@ public class UIHelper {
         if (null == view) {				// 若是获取不到, 就冲新查找控件
             view = mConvertView.findViewById(viewId);
             if (view == null) {
-                throw new RuntimeException("UIHelper  --> getViewById  Fail\n"
+                throwRuntimeException("UIHelper  --> getViewById  Fail\n"
                         + "view == null, please check your viewId");
+            } else {
+                mViews.put(viewId, view);	// 将查找到的控件放入控件集合列表, 以便再次获取
             }
-            mViews.put(viewId, view);	// 将查找到的控件放入控件集合列表, 以便再次获取
         }
 
         return (T) view;
+    }
+
+    /**
+     * 抛出异常, 根据是否是调试模式, 当且仅当调试模式才会抛异常, 异常统一管理
+     *
+     * @param execption 异常内容
+     */
+    private void throwRuntimeException(String execption) {
+        if (debug) {
+            throw new RuntimeException(execption);
+        } else {
+            // TODO 异常统一处理
+        }
     }
 
     /**
@@ -114,10 +130,10 @@ public class UIHelper {
     public UIHelper setText4Tv (int textViewId, String text)	{
         TextView tv = getViewById(textViewId);
         if (null == tv) {		// 判空
-            throw new RuntimeException("UIHelper  --> setText4Tv  Fail\n"
+            throwRuntimeException("UIHelper  --> setText4Tv  Fail\n"
                     + "tv == null, please check your textViewId");
         } else {
-            tv.setText(null == text ? "" : text);
+            tv.setText(null == text ? NULL : text);
         }
 
         return this;
@@ -133,10 +149,10 @@ public class UIHelper {
     public UIHelper setText4Tv (int textViewId, SpannableStringBuilder text)	{
         TextView tv = getViewById(textViewId);
         if (null == tv) {		// 判空
-            throw new RuntimeException("UIHelper  --> setText4Tv  Fail\n"
+            throwRuntimeException("UIHelper  --> setText4Tv  Fail\n"
                     + "tv == null, please check your textViewId");
         } else {
-            tv.setText(null == text ? "" : text);
+            tv.setText(null == text ? NULL : text);
         }
 
         return this;
@@ -152,7 +168,7 @@ public class UIHelper {
     public UIHelper setText4Tv (int textViewId, int resId)	{
         TextView tv = getViewById(textViewId);
         if (null == tv) {		// 判空
-            throw new RuntimeException("UIHelper  --> setText4Tv  Fail\n"
+            throwRuntimeException("UIHelper  --> setText4Tv  Fail\n"
                     + "tv == null, please check your textViewId");
         } else {
             tv.setText(CommonUtils.getResources().getString(resId));
@@ -171,10 +187,10 @@ public class UIHelper {
     public UIHelper setMaxLength4Edt (int edtId, int length)	{
         EditText edt = getViewById(edtId);
         if (null == edt) {		// 判空
-            throw new RuntimeException("UIHelper  --> setMaxLength4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setMaxLength4Edt  Fail\n"
                     + "edt == null, please check your edtId");
         } else if(length <= 0) {
-            throw new RuntimeException("UIHelper  --> setMaxLength4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setMaxLength4Edt  Fail\n"
                     + "length <= 0, please check your length");
         } else {
             edt.setFilters(new InputFilter[]{new InputFilter.LengthFilter(length)});
@@ -194,10 +210,10 @@ public class UIHelper {
         EditText edt = getViewById(edtId);
         String hint = CommonUtils.getResources().getString(resId);
         if (null == edt) {		// 判空
-            throw new RuntimeException("UIHelper  --> setHint4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setHint4Edt  Fail\n"
                     + "edt == null, please check your edtId");
         } else if(null == hint) {
-            throw new RuntimeException("UIHelper  --> setHint4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setHint4Edt  Fail\n"
                     + "hint == null, please check your resId");
         } else {
             edt.setHint(hint);
@@ -216,10 +232,10 @@ public class UIHelper {
     public UIHelper setHint4Edt (int edtId, String hint)	{
         EditText edt = getViewById(edtId);
         if (null == edt) {		// 判空
-            throw new RuntimeException("UIHelper  --> setHint4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setHint4Edt  Fail\n"
                     + "edt == null, please check your edtId");
         } else if(null == hint) {
-            throw new RuntimeException("UIHelper  --> setHint4Edt  Fail\n"
+            throwRuntimeException("UIHelper  --> setHint4Edt  Fail\n"
                     + "hint == null, please check your hint");
         }else {
             edt.setHint(hint);
@@ -229,16 +245,77 @@ public class UIHelper {
     }
 
     /**
+     * 给ID为 edtId 的 EditText 设置 文本 ，并返回 this
+     *
+     * @param edtId	EditText 的控件 ID
+     * @param text		设置的文本内容
+     * @return 		UIHelper 本身
+     */
+    public UIHelper setText4Edt (int edtId, String text)	{
+        EditText edt = getViewById(edtId);
+        if (null == edt) {		// 判空
+            throwRuntimeException("UIHelper  --> setText4Edt  Fail\n"
+                    + "edt == null, please check your edtId");
+        } else if(null == text) {
+            throwRuntimeException("UIHelper  --> setHint4Edt  Fail\n"
+                    + "hint == null, please check your text");
+        }else {
+            edt.setText(text);
+        }
+
+        return this;
+    }
+
+    /**
+     * 给ID为 edtId 的 EditText 设置 是否可编辑 ，并返回 this
+     *
+     * @param edtId 	EditText 的控件 ID
+     * @param editable	是否可编辑
+     * @return 		    UIHelper 本身
+     */
+    public UIHelper setEnabled (int edtId, boolean editable)	{
+        EditText edt = getViewById(edtId);
+        if (null == edt) {		// 判空
+            throwRuntimeException("UIHelper  --> setEnabled  Fail\n"
+                    + "edt == null, please check your edtId");
+        }else {
+            edt.setEnabled(editable);
+        }
+
+        return this;
+    }
+
+    /**
      * 给ID为 textViewId 的 TextView 设置 文字颜色 ，并返回 this
      *
      * @param textViewId	TextView 的控件 ID
-     * @param color		设置的颜色
+     * @param colorRes 	设置的颜色res
+     * @return 			UIHelper 本身
+     */
+    public UIHelper setColorRes4Tv (int textViewId, int colorRes)	{
+        TextView tv = getViewById(textViewId);
+        if (null == tv) {		// 判空
+            throwRuntimeException("UIHelper  --> setColorRes4Tv  Fail\n"
+                    + "tv == null, please check your textViewId");
+        } else {
+            tv.setTextColor(mContext.getResources().getColor(colorRes));
+        }
+
+        return this;
+    }
+
+
+    /**
+     * 给ID为 textViewId 的 TextView 设置 文字颜色 ，并返回 this
+     *
+     * @param textViewId	TextView 的控件 ID
+     * @param color 	设置的颜色
      * @return 			UIHelper 本身
      */
     public UIHelper setColor4Tv (int textViewId, int color)	{
         TextView tv = getViewById(textViewId);
         if (null == tv) {		// 判空
-            throw new RuntimeException("UIHelper  --> setColor4Tv  Fail\n"
+            throwRuntimeException("UIHelper  --> setColor4Tv  Fail\n"
                     + "tv == null, please check your textViewId");
         } else {
             tv.setTextColor(color);
@@ -257,7 +334,7 @@ public class UIHelper {
     public UIHelper setImage4Img (int imageViewId, int drawableId)	{
         ImageView img = getViewById(imageViewId);
         if (null == img) {		// 判空
-            throw new RuntimeException("UIHelper  --> setImage4Img  Fail\n"
+            throwRuntimeException("UIHelper  --> setImage4Img  Fail\n"
                     + "img == null, please check your imageViewId");
         } else {
             img.setImageResource(drawableId);
@@ -276,10 +353,10 @@ public class UIHelper {
     public UIHelper setImage4Img (int imageViewId, Bitmap bitmap)	{
         ImageView img = getViewById(imageViewId);
         if (null == img) {        // 判空
-            throw new RuntimeException("UIHelper  --> setImage4Img  Fail\n"
+            throwRuntimeException("UIHelper  --> setImage4Img  Fail\n"
                     + "img == null, please check your imageViewId");
         } else if (null == bitmap) {	// 判空
-            throw new RuntimeException("UIHelper  --> setImage4Img  Fail\n"
+            throwRuntimeException("UIHelper  --> setImage4Img  Fail\n"
                     + "bitmap == null, please check your bitmap resource");
         } else {
             img.setImageBitmap(bitmap);
@@ -288,7 +365,27 @@ public class UIHelper {
         return this;
     }
 
+    /**
+     * 给ID为 viewId 的 View 设置 透明度 ，并返回 this
+     *
+     * @param viewId    控件ID
+     * @param alpha     透明度
+     * @return          UIHelper 本身
+     */
+    public UIHelper setAlpha (int viewId, float alpha)	{
+        View view = getViewById(viewId);
+        if (null == view) {        // 判空
+            throwRuntimeException("UIHelper  --> setAlpha  Fail\n"
+                    + "img == null, please check your viewId");
+        } else {
+            view.setAlpha(alpha);
+        }
+
+        return this;
+    }
+
     // TODO lz 根据实际需要, 添加 UIL 和 Fresco 等方法, 加载网络图片, 或者其他类型的图片
+
     /**
      * 给ID为 imageViewId 的 ImageView 设置 图片 ，并返回 this
      *
@@ -299,10 +396,10 @@ public class UIHelper {
     public UIHelper setUrl4Img(int imageViewId, String url) {
         ImageView img = getViewById(imageViewId);
         if (null == img) {        // 判空
-            throw new RuntimeException("UIHelper  --> setUrl4Img  Fail\n"
+            throwRuntimeException("UIHelper  --> setUrl4Img  Fail\n"
                     + "img == null, please check your imageViewId");
         } else if (null == url) {	// 判空
-            throw new RuntimeException("UIHelper  --> setUrl4Img  Fail\n"
+            throwRuntimeException("UIHelper  --> setUrl4Img  Fail\n"
                     + "bitmap == null, please check your url resource");
         } else {
             GlideUtils.getInstance().GlideImage(BaseApp.getApplication(), url, img);
@@ -321,7 +418,7 @@ public class UIHelper {
     public UIHelper setCheck4CheckBox(int checkViewId, boolean isCheck) {
         CheckBox checkBox = getViewById(checkViewId);
         if (null == checkBox) {        // 判空
-            throw new RuntimeException("UIHelper  --> setCheck4CheckBox  Fail\n"
+            throwRuntimeException("UIHelper  --> setCheck4CheckBox  Fail\n"
                     + "checkBox == null, please check your checkViewId");
         } else {
             checkBox.setChecked(isCheck);
@@ -340,7 +437,7 @@ public class UIHelper {
     public UIHelper setVisibility (int viewId, int visibility) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setVisibility  Fail\n"
+            throwRuntimeException("UIHelper  --> setVisibility  Fail\n"
                     + "view == null, please check your viewId");
         } else {	// View 的可见状态有且仅有三种 VISIBLE, INVISIBLE, GONE , 默认设置 VISIBLE
             view.setVisibility(visibility == View.VISIBLE ? View.VISIBLE :
@@ -361,7 +458,7 @@ public class UIHelper {
     public UIHelper setClickEnablility (int viewId, boolean clickAble) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setClickEnablility  Fail\n"
+            throwRuntimeException("UIHelper  --> setClickEnablility  Fail\n"
                     + "view == null, please check your viewId");
         } else {
             view.setClickable(clickAble);
@@ -380,7 +477,7 @@ public class UIHelper {
     public UIHelper setSelected (int viewId, boolean isSelected) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setSelected  Fail\n"
+            throwRuntimeException("UIHelper  --> setSelected  Fail\n"
                     + "view == null, please check your viewId");
         } else {
             view.setSelected(isSelected);
@@ -391,19 +488,19 @@ public class UIHelper {
 
 
     /**
-     * 给ID为 viewId 的 控件 设置 背景颜色
+     * 给ID为 viewId 的 控件 设置 背景
      *
      * @param viewId		View 的id
-     * @param color	    颜色 ID
+     * @param resId	    背景资源 ID
      * @return 			UIHelper 本身
      */
-    public UIHelper setColor4BackGround (int viewId, int color) {
+    public UIHelper setBackGround (int viewId, int resId) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setClickBackGround  Fail\n"
+            throwRuntimeException("UIHelper  --> setClickBackGround  Fail\n"
                     + "view == null, please check your viewId");
         } else {
-            view.setBackground(CommonUtils.getResources().getDrawable(color));
+            view.setBackgroundResource(resId);
         }
 
         return this;
@@ -419,10 +516,10 @@ public class UIHelper {
     public UIHelper setOnClickListener (int viewId, View.OnClickListener listener) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setOnClickListener  Fail\n"
+            throwRuntimeException("UIHelper  --> setOnClickListener  Fail\n"
                     + "view == null, please check your viewId");
         } else if (null == listener) {
-            throw new RuntimeException("UIHelper  --> setOnClickListener  Fail\n"
+            throwRuntimeException("UIHelper  --> setOnClickListener  Fail\n"
                     + "listener == null, please check your listener");
         } else {
             view.setOnClickListener(listener);
@@ -441,10 +538,10 @@ public class UIHelper {
     public UIHelper setOnTouchListener (int viewId, View.OnTouchListener listener) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
+            throwRuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
                     + "view == null, please check your viewId");
         } else if (null == listener) {
-            throw new RuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
+            throwRuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
                     + "listener == null, please check your listener");
         } else {
             view.setOnTouchListener(listener);
@@ -462,7 +559,7 @@ public class UIHelper {
     public UIHelper setFocusable (int viewId) {
         View view = getViewById(viewId);
         if (null == view) {
-            throw new RuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
+            throwRuntimeException("UIHelper  --> setOnTouchListener  Fail\n"
                     + "view == null, please check your viewId");
         } else {
             view.setFocusable(true);
@@ -471,4 +568,65 @@ public class UIHelper {
         return this;
     }
 
+    /**
+     * 给ID为 edtId 的 EditText 控件 获取文本
+     *
+     * @param edtId		EditText 的id
+     * @return 			UIHelper 本身
+     */
+    public String getEdtText (int edtId) {
+        View view = getViewById(edtId);
+        if (null == view) {
+            throwRuntimeException("UIHelper  --> getEdtText  Fail\n"
+                    + "view == null, please check your edtId");
+        } else if (view instanceof EditText) {
+            return ((EditText) view).getText().toString();
+        } else {
+            throwRuntimeException("UIHelper  --> getEdtText  Fail\n"
+                    + "view is no an EditText, please check your edtId");
+        }
+
+        return NULL;
+    }
+
+    /**
+     * 给ID为 edtId 的 控件 获取文本, 并取消头部空格
+     *
+     * @param edtId		EditText 的id
+     * @return 			UIHelper 本身
+     */
+    public String getEdtTrimText(int edtId) {
+        return getEdtText(edtId).trim();
+    }
+
+    /**
+     * 给ID为 viewId 的 TextView 控件 获取文本
+     *
+     * @param tvId		TextView 的id
+     * @return 			UIHelper 本身
+     */
+    public String getTvText (int tvId) {
+        View view = getViewById(tvId);
+        if (null == view) {
+            throwRuntimeException("UIHelper  --> getTvText  Fail\n"
+                    + "view == null, please check your tvId");
+        } else if (view instanceof TextView) {
+            return ((TextView) view).getText().toString();
+        } else {
+            throwRuntimeException("UIHelper  --> getTvText  Fail\n"
+                    + "view is no an EditText, please check your tvId");
+        }
+
+        return NULL;
+    }
+
+    /**
+     * 给ID为 viewId 的 TextView 控件 获取文本, 并取消头部空格
+     *
+     * @param tvId		TextView 的id
+     * @return 			UIHelper 本身
+     */
+    public String getTvTrimText(int tvId) {
+        return getTvText(tvId).trim();
+    }
 }
