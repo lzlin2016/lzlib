@@ -57,7 +57,7 @@ public class TestSlipViewPagerActivity extends AppCompatActivity {
             }
         });
         // 注意必须在设置适配器之后才调用, 而且使用该控件的父布局必须是 wrap_content, 否则无法准确计算
-        SlipViewPagerHelper.init(this, viewPager, false, 3, 16, btnPre, btnNext); // 不可滑动, 带指示器, 3个item, 间距为16dp
+        SlipViewPagerHelper.init(this, viewPager, true, 3, 16, btnPre, btnNext); // 不可滑动, 带指示器, 3个item, 间距为16dp
     }
 
     private void initData() {

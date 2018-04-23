@@ -58,7 +58,8 @@ public  class SlipViewPagerHelper {
      * @param btnPre            控制指示器, 向前
      * @param btnNext           控制指示器, 向后
      */
-    public static void init(Context mContext, SlipViewPager slipViewPager, boolean isScrollAble, int showItemCount, int padding, View btnPre, View btnNext) {
+    public static void init(Context mContext, SlipViewPager slipViewPager, boolean isScrollAble,
+                            int showItemCount, int padding, View btnPre, View btnNext) {
         slipViewPager.init(showItemCount, padding, isScrollAble);
 
         if (slipViewPager.getShowItemCount() % 2 == 0) {

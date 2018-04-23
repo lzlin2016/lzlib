@@ -2,6 +2,7 @@ package com.lib.lzlin.api.commonAdapter.list_gridViewAdapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.SpannableStringBuilder;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,6 +118,25 @@ public class CommonViewHolder {
 	}
 
 	/**
+	 * 给ID为 textViewId 的 TextView 设置 文字 多彩text ，并返回 this
+	 *
+	 * @param textViewId				TextView 的控件 ID
+	 * @param spannableStringBuilder	设置的文本内容
+	 * @return 						UIHelper 本身
+	 */
+	public CommonViewHolder setText4Tv (int textViewId, SpannableStringBuilder spannableStringBuilder)	{
+		TextView tv = getViewById(textViewId);
+		if (null == tv) {		// 判空
+			throw new RuntimeException("UIHelper  --> setText4Tv  Fail\n"
+					+ "tv == null, please check your textViewId");
+		} else {
+			tv.setText(null == spannableStringBuilder ? "" : spannableStringBuilder);
+		}
+
+		return this;
+	}
+
+	/**
 	 * 给ID为 textViewId 的 TextView 设置 文字text ，并返回 this
 	 *
 	 * @param context		上下文对象
@@ -131,6 +151,26 @@ public class CommonViewHolder {
 					+ "tv == null, please check your textViewId");
 		} else {
 			tv.setText(context.getResources().getString(resId));
+		}
+
+		return this;
+	}
+
+	/**
+	 * 给ID为 textViewId 的 TextView 设置 文字text ，并返回 this
+	 *
+	 * @param textViewId	TextView 的控件 ID
+	 * @param text			设置的文本内容
+	 * @param defaultText	当text == null 时设置的文本内容
+	 * @return 			CommonRecyclerViewHolder 本身
+	 */
+	public CommonViewHolder setText4Tv (int textViewId, String text, String defaultText)	{
+		TextView tv = getViewById(textViewId);
+		if (null == tv) {		// 判空
+			throw new RuntimeException("CommonRecyclerViewHolder  --> setText4Tv  Fail\n"
+					+ "tv == null, please check your textViewId");
+		} else {
+			tv.setText(null == text ? defaultText : text);
 		}
 
 		return this;

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.lib.lzlin.api.utils.uiUtils.UIHelper;
+
 import java.util.List;
 
 /**
@@ -98,20 +100,24 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CommonViewHolder holder = CommonViewHolder
-                .getViewHolder(mContext, convertView, parent, mlayoutId, position);
+        UIHelper helper = null;
+        if (parent == null) {
+            helper = UIHelper.getInstance(mContext, mlayoutId);
+            helper.getConvertView().setTag(helper);
+        } else {
+            helper = (UIHelper) convertView.getTag();
+        }
+        initItemData(helper, position, getItem(position));
 
-        initItemData(holder, position, getItem(position));
-
-        return holder.getConvertView();
+        return helper.getConvertView();
     }
 
     /**
      * 用户必须覆写该方法来讲数据填充到视图中
      *
-     * @param holder 			通用的ViewHolder, 里面会装载listview, gridview等组件的每一项的视图，并且缓存其子view
+     * @param helper 		通用的helper, 里面会装载listview, gridview等组件的每一项的视图，并且缓存其子view
      * @param position 		下标索引
-     * @param bean  			数据源的第position项数据
+     * @param bean  		数据源的第position项数据
      */
-    public abstract void initItemData(CommonViewHolder holder, int position, T bean);
+    public abstract void initItemData(UIHelper helper, int position, T bean);
 }

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.lib.lzlin.api.R;
 import com.lib.lzlin.api.commonAdapter.list_gridViewAdapter.CommonAdapter;
 import com.lib.lzlin.api.commonAdapter.list_gridViewAdapter.CommonViewHolder;
+import com.lib.lzlin.api.utils.uiUtils.UIHelper;
 import com.lib.lzlin.api.utils.wifiUtils.WifiAdmin;
 import com.lib.lzlin.api.utils.wifiUtils.model.WifiBean;
 
@@ -50,7 +51,7 @@ public class TestWifiActivity extends AppCompatActivity {
         mListView.setAdapter(new CommonAdapter<WifiBean>(this, R.layout.item_layout_wifi, mData) {
 
             @Override
-            public void initItemData(CommonViewHolder holder, int position, final WifiBean item) {
+            public void initItemData(UIHelper holder, int position, final WifiBean item) {
                 holder.setText4Tv(R.id.tvWifiName, item.getSsid())
                         .setText4Tv(R.id.tvWifiPwd, item.getScanResult().toString())
                         .setOnClickListener(R.id.btnConnect, new View.OnClickListener() {
