@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
-
+//apply plugin: 'android-apt'
+//
 def AAVersion = '3.2'
-apt {
-    arguments {
-        androidManifestFile variant.outputs[0].processResources.manifestFile
-        resourcePackageName "com.lib.lzlin.api"
-    }
-}
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0].processResources.manifestFile
+//        resourcePackageName "com.lib.lzlin.api"
+//    }
+//}
 
 android {
     compileSdkVersion 25
@@ -19,7 +19,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        jackOptions {
+            enabled=true
+        }
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,7 +39,7 @@ android {
 }
 
 dependencies {
-    apt "org.androidannotations:androidannotations:$AAVersion"
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
     compile fileTree(include: ['*.jar'], dir: 'libs')

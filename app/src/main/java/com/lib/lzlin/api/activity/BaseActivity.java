@@ -72,19 +72,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         View imgBack = toolbarView.findViewById(R.id.imgBack);
         TextView tvToolbar = (TextView) toolbarView.findViewById(R.id.tvToolbar);
         tvToolbar.setText(getResources().getString(ToolbarTitleId));
-        imgBack.setOnClickListener(this);
+        imgBack.setOnClickListener(view -> finish());
         toolbar.addView(toolbarView);
     }
 
-    @Override
-    public void onClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.imgBack:
-                finish();
-                break;
-        }
-    }
+    @Override public void onClick(View view) {  }
 
     /**
      * 初始化上个界面传值
